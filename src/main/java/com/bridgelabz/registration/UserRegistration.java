@@ -22,8 +22,8 @@ public class UserRegistration {
     }
 
     static boolean email(String mail) {
-        String regex = "^[a-z A-Z 0-9]+([.][a-z A-Z 0-9]{1,})?[@][a-z A-Z]+[.][a-z A-Z]{2,3}([.][a-z A-Z]{1,2})?$";
-        Pattern pattern = Pattern.compile(regex);
+    	String regex = "^[a-zA-Z]+[\\w]*[- . + _]?[\\w]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$";        
+    	Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(mail);
         return matcher.matches();
         
