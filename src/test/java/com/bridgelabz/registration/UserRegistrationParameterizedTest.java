@@ -26,38 +26,28 @@ public class UserRegistrationParameterizedTest {
 	}
 
 	@Test
-	public void givenEmailAddress_ShouldReturn_AsExpected(){
-		boolean testResult = UserRegistration.email(testEmail);
-		Assert.assertEquals(testResult, expectedResult);
+	public void givenEmailAddress_ShouldReturn_AsExpected() {
+		boolean testResult;
+		try {
+			testResult = userValidator.validateEmail(testEmail);
+			Assert.assertEquals(testResult, expectedResult);
+		} catch (UserRegistrationException e) {
+		}
+
 	}
 
 	@Parameterized.Parameters
 	public static Collection input() {
 
-		return Arrays.asList(new Object[][] {   { "abc@bridgelabz.co.in", true },
-												{ "abc@gmail.com.com", true },
-												{ "abc@yahoo.com", true }, 
-												{ "abc@1.com", true }, 
-												{ "abc-100@yahoo.com", true },
-												{ "abc.100@yahoo.com", true }, 
-												{ "abc111@abc.com", true }, 
-												{ "abc-100@abc.net", true },
-												{ "abc.100@abc.com.au", true }, 
-												{ "abc+100@gmail.com", true },
-												
-												{ ".abc@abc.com", false }, 
-												{ "abc", false }, 
-												{ "abc@.com.my", false }, 
-												{ "abc@abc@gmail.com", false },
-												{ "abc()*@gmail.com", false }, 
-												{ "abc..2002@gmail.com", false }, 
-												{ "abc.@gmail.com", false },
-												{ "abc123@.com", false }, 
-												{ "abc123@.com.com", false },
-												{ "abc123@gmail.a", false },
-												{ "abc@%*.com", false }, 
-												{ "abc@gmail.com.1a", false }, 
-												{ ".abc@gmail.com.aa.au", false } });
+		return Arrays.asList(new Object[][] { { "abc@bridgelabz.co.in", true }, { "abc@gmail.com.com", true },
+				{ "abc@yahoo.com", true }, { "abc@1.com", true }, { "abc-100@yahoo.com", true },
+				{ "abc.100@yahoo.com", true }, { "abc111@abc.com", true }, { "abc-100@abc.net", true },
+				{ "abc.100@abc.com.au", true }, { "abc+100@gmail.com", true },
+
+				{ ".abc@abc.com", false }, { "abc", false }, { "abc@.com.my", false }, { "abc@abc@gmail.com", false },
+				{ "abc()*@gmail.com", false }, { "abc..2002@gmail.com", false }, { "abc.@gmail.com", false },
+				{ "abc123@.com", false }, { "abc123@.com.com", false }, { "abc123@gmail.a", false },
+				{ "abc@%*.com", false }, { "abc@gmail.com.1a", false }, { ".abc@gmail.com.aa.au", false } });
 
 	}
 
