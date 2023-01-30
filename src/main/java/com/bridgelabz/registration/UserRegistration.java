@@ -5,14 +5,15 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-	static boolean firstName(String firstName) {
-		String regex = "^[A-Z]{1}[a-z]{2,}$";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(firstName);
-		return matcher.matches();
-	}
+    static boolean firstName(String firstName) {
+	String regex = "^[A-Z]{1}[a-z]{2,}$";
+	Pattern pattern = Pattern.compile(regex);
+	Matcher matcher = pattern.matcher(firstName);
+	return matcher.matches();
 	
-	static boolean lastName(String lastName){
+    }
+	
+    static boolean lastName(String lastName){
         String regex = "^[A-Z]{1}[a-z]{2,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(lastName);
